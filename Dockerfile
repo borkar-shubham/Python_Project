@@ -2,22 +2,22 @@ FROM python:3.7.3-stretch
 
 ## Step 1:
 # Create a working directory
-WORKDIR /my-dir
+WORKDIR /app
 
 ## Step 2:
 # Copy source code to working directory
 RUN mkdir model_data
-ADD model_data/ /my-dir/model_data
-COPY app.py /my-dir
-COPY make_prediction.sh /my-dir
-COPY Makefile /my-dir
-COPY requirements.txt /my-dir
-COPY run_docker.sh /my-dir
+ADD model_data/ /app/model_data
+COPY app.py /app
+COPY make_prediction.sh /app
+COPY Makefile /app
+COPY requirements.txt /app
+COPY run_docker.sh /app
 
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
-RUN pip install -r /my-dir/requirements.txt
+RUN pip3 install -r /app/requirements.txt
 
 ## Step 4:
 # Expose port 80

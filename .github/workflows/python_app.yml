@@ -25,10 +25,10 @@ jobs:
       - name: building docker image
         run: |
          sudo docker build -t shubhamborkar/pythonapp:v1.0 ./
-          if: ${{ always() }}
   
   publishing_docker_image:
     runs-on: [self-hosted, git-runner]
+    #if: ${{ always() }}        ...runs the job regardless of other jobs being successful
     needs: [runner_dependencies, building_docker_image]
     steps:
       - name: publishing_docker_image

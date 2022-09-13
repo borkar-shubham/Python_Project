@@ -40,7 +40,7 @@ jobs:
   
   building_docker_image:
     runs-on: [self-hosted, git-runner]
-    # needs: [runner_dependencies]
+    needs: [testing_python]
     steps:
       - name: building docker image
         run: |

@@ -20,8 +20,19 @@ jobs:
   
   building_docker_image:
     runs-on: [self-hosted, git-runner]
+    needs: [runner_dependencies]
     steps:
-      - name: installing runner dependencies
+      - name: building docker image
         run: |
          sudo docker build -t shubhamborkar/pythonapp:v1.0 ./
-          
+          if: ${{ always() }}
+  
+  publishing_docker_image:
+    runs-on: [self-hosted, git-runner]
+    needs: [runner_dependencies, building_docker_image]
+    steps:
+      - name: publishing_docker_image
+        run: |
+          sudo chmod 666 /var/run/docker.sock
+          cat docpasswd.txt | docker login --username shubhamborkar --password-stdin
+          sudo docker push shubhamborkar/myapp:v1.0

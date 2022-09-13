@@ -10,13 +10,13 @@ on:
       - develop
 
 jobs:
-  runner_dependencies:
-    runs-on: [self-hosted, linux, git-runner]
-    steps:
-      - uses: actions/checkout@v2
-      - name: installing runner dependencies
-        run: |
-         bash dependencies.sh
+  # runner_dependencies:
+  #   runs-on: [self-hosted, linux, git-runner]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: installing runner dependencies
+  #       run: |
+  #        bash dependencies.sh
   
   building_docker_image:
     runs-on: [self-hosted, git-runner]

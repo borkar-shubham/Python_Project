@@ -31,7 +31,7 @@ jobs:
     #if: ${{ always() }}        ...runs the job regardless of other jobs being successful
     needs: [runner_dependencies, building_docker_image]
     steps:
-      - name: publishing_docker_image
+      - name: publishing docker image
         run: |
           sudo chmod 666 /var/run/docker.sock
           cat docpasswd.txt | docker login --username shubhamborkar --password-stdin

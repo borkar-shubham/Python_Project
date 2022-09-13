@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: installing runner dependencies
         run:
-          bash dependencies.sh
+          bash ../../dependencies.sh

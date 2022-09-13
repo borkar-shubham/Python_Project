@@ -8,12 +8,19 @@ on:
     branches:
       - main
       - develop
+
 jobs:
-  create_docker_image:
-    runs-on: self-hosted
+  runner_dependencies:
+    runs-on: [self-hosted, linux, git-runner]
     steps:
       - name: installing runner dependencies
         run: |
-          pwd
-          ls
+         bash dependencies.sh
+  
+  building_docker_image:
+    runs-on: [self-hosted, git-runner]
+    steps:
+      - name: installing runner dependencies
+        run: |
+         sudo docker build -t shubhamborkar/myapp:v1.0
           

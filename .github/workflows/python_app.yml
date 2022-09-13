@@ -15,4 +15,5 @@ jobs:
       - name: installing runner dependencies
         run: |
           pwd
-          bash ../../dependencies.sh
+          ls
+          

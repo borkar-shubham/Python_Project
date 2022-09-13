@@ -1,12 +1,17 @@
-name: learn-github-actions
-on: [push]
+name: python_app_image_publication
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+  pull_request:
+    branches:
+      - main
+      - develop
 jobs:
-  check-bats-version:
+  create_docker_image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: installing runner dependencies
+        run:
+          bash dependencies.sh

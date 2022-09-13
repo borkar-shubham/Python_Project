@@ -23,5 +23,5 @@ jobs:
     steps:
       - name: installing runner dependencies
         run: |
-         sudo docker build -t shubhamborkar/pythonapp:v1.0
+         sudo docker build -t shubhamborkar/pythonapp:v1.0 ./
           
